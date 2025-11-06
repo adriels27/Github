@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operaciones con Bucle</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      color: #333;
+    }
+    input, button {
+      padding: 10px;
+      margin: 5px;
+      font-size: 16px;
+    }
+    #resultado {
+      margin-top: 20px;
+      padding: 15px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <h1>Operaciones Matemáticas en Bucle</h1>
+
+  <label for="num1">Número 1:</label>
+  <input type="number" id="num1">
+
+  <label for="num2">Número 2:</label>
+  <input type="number" id="num2">
+
+  <button onclick="calcular()">Calcular</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    function calcular() {
+      const num1 = parseFloat(document.getElementById('num1').value);
+      const num2 = parseFloat(document.getElementById('num2').value);
+      const salida = document.getElementById('resultado');
+      salida.innerHTML = "";
+
+      if (isNaN(num1) || isNaN(num2)) {
+        salida.innerHTML = "<p style='color:red;'>Por favor, ingrese dos números válidos.</p>";
+        return;
+      }
+
+      for (let i = 1; i <= 5; i++) {
+        let resultado;
+        switch(i) {
+          case 1:
+            resultado = num1 + num2;
+            salida.innerHTML += `<p><b>Iteración ${i}:</b> Suma = ${resultado}</p>`;
+            break;
+          case 2:
+            resultado = num1 - num2;
+            salida.innerHTML += `<p><b>Iteración ${i}:</b> Resta = ${resultado}</p>`;
+            break;
+          case 3:
+            resultado = num1 * num2;
+            salida.innerHTML += `<p><b>Iteración ${i}:</b> Multiplicación = ${resultado}</p>`;
+            break;
+          case 4:
+            if (num2 !== 0) {
+              resultado = num1 / num2;
+              salida.innerHTML += `<p><b>Iteración ${i}:</b> División = ${resultado}</p>`;
+            } else {
+              salida.innerHTML += `<p><b>Iteración ${i}:</b> División = Error (división por cero)</p>`;
+            }
+            break;
+          case 5:
+            if (num2 !== 0) {
+              resultado = num1 % num2;
+              salida.innerHTML += `<p><b>Iteración ${i}:</b> Módulo = ${resultado}</p>`;
+            } else {
+              salida.innerHTML += `<p><b>Iteración ${i}:</b> Módulo = Error (división por cero)</p>`;
+            }
+            break;
+        }
+      }
+    }
+  </script>
+</body>
+</html>
